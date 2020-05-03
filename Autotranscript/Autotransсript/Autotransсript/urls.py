@@ -20,7 +20,8 @@ urlpatterns = [
     path('reg/', include('reg.urls')),
     path('admin/', admin.site.urls),
     path('', include('welcome.urls')),
-    path('auth/', include('auth.urls')),
     path('users/', include('users.urls')),
-    path('sessions/', include('sessions.urls')),
+    path('user_window/', include('user_window.urls')),
+    path('join/', include('join.urls')),
+    path('create/', include('create.urls')),
 ]
