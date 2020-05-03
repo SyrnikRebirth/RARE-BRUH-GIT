@@ -25,7 +25,7 @@
       <header class="masthead mb-auto">
         <div class="inner">
           <span id='hello-msg'>Hello, {{request.user}}</span>
-          <span><a href= 'http://127.0.0.1:8000/login'>Logout</a></span>
+          <span><a href= "{% url 'logout' %}">Logout</a></span>
           <h3 class="masthead-brand">Окно пользователя</h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link active" href="http://127.0.0.1:8000/">главная</a>

@@ -14,7 +14,7 @@ def index(request):
             login(request, user)
             return redirect('http://127.0.0.1:8000/user_window/')
         else:
-            messages.info(request, 'Username or password is incorrect')
+            messages.info(request, 'Неверное имя пользователя или пароль')
             return render(request, 'login/log_page.html')
     context = {}
     return render(request, 'login/log_page.html', context)
