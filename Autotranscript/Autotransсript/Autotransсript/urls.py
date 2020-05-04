@@ -26,4 +26,5 @@ urlpatterns = [
     path('login/', include('login.urls')),
     path('registrate/', include('registrate.urls')),
     path('logout/', views.logoutUser, name='logout'),
+    path('chat/', include('chat.urls'))
 ]

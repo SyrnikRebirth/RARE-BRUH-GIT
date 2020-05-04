@@ -42,10 +42,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'welcome','user_window',
     'join','create', 'login',
-    'registrate',
+    'registrate','chat','channels'
 
     # 'apps.registration'
 ]
+# mysite/settings.py
+# Channels
+ASGI_APPLICATION = 'chat.routing.application'
+#
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

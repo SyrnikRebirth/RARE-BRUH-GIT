@@ -1,32 +1,32 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ru">
+<link rel="stylesheet" href="{% static 'css/welcome.css' %}"/>
 <head>
-      <style>
-        .bd-placeholder-img {
-          font-size: 1.125rem;
-          text-anchor: middle;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-        }
+  <title>Создайте запись</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
-        @media (min-width: 768px) {
-          .bd-placeholder-img-lg {
-            font-size: 3.5rem;
-          }
-        }
-      </style>
-      <!-- Custom styles for this template -->
-      <link href="cover.css" rel="stylesheet">
     </head>
 <body class="text-center">
-      </header>
       <main role="main" class="inner cover">
-        <h1 class="cover-heading">Speech to Text.</h1>
-        <p class="lead">Добро пожаловать на главную страницу! Давайте начнем</p>
+        <h1 class="cover-heading">Stenogramm</h1>
+        <p class="lead">Добро пожаловать! Войдите в аккаунт или зарегестрируйтесь</p>
         <p class="lead">
-          <a href="http://127.0.0.1:8000/user_window" class="btn btn-lg btn-secondary">Начать</a>
+          <div class="container h-100">
+            <div class="d-flex justify-content-center h-100">
+              <div class="user_card">
+                <div class="d-flex justify-content-center">
+                  <h3 id="form-title">Создайте запись или присоединитесь</h3>
+                </div>
+                <div class="d-flex justify-content-center mt-3 login_container">
+                  <a href="http://127.0.0.1:8000/login/" class="btn log_btn">Войти</a>
+                  <a  href="http://127.0.0.1:8000/registrate"  class="btn reg_btn">Регистрация</a>
+                  </div>
+                </div>
+                </div>
+            </div>
         </p>
       </main>
 </body>

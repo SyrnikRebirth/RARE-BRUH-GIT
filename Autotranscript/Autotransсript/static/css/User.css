@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #B2DFDB !important;
+}
+.user_card {
+  width: 550px;
+  height: 250px;
+  margin-top: 150px;
+  margin-bottom: 200px;
+  background: #009688;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+
+}
+
+#form-title{
+  color: #fff;
+
+}
+
+.host_btn {
+  width: 100%;
+  background: #00796B !important;
+  color: white !important;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.host_btn:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+
+.join_btn {
+  width: 100%;
+  background: #00796B !important;
+  color: white !important;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.join_btn:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+
+.Greetings {
+  font-size: 200%;
+}
+
+.submit
+{
+    float: right;
+    margin-right: 20px;
+}
