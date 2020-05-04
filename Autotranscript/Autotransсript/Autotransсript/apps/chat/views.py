@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.utils.safestring import mark_safe
+import json
 
 @login_required(login_url='http://127.0.0.1:8000/login/')
 def index(request):
@@ -8,7 +10,8 @@ def index(request):
 @login_required(login_url='http://127.0.0.1:8000/login/')
 def room(request, room_name):
     return render(request, 'chat/room.html', {
-        'room_name': room_name
+        'room_name_json': mark_safe(json.dumps(room_name)),
+        'username': mark_safe(json.dumps(request.user.username))
     })
 
 # Create your views here.
