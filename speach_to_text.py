@@ -9,9 +9,28 @@ def receive_stop_signal(signal):
     else:
         return False
 
+def punctuation_post_processing(string):
+    output_string = string
+    massive1 = ["здравствуйте ", " итак "]
+    massive2 = [" что ", " как ", " когда",
+                " но ", " где ", " а ", " котор",
+                " потому что ", " так как ", " зато ",
+                " чей", " как будто ", " сколько", " зачем ", " если "]
+    for matching_word in massive1:
+        index = output_string.find(matching_word)
+        while (index != -1):
+            output_string = output_string[:index + len(matching_word) - 1] + "," + output_string[index + len(matching_word) - 1:]
+            index = output_string.find(matching_word, index + len(matching_word))
+    for matching_word in massive2:
+        index = output_string.find(matching_word)
+        while (index != -1):
+            output_string = output_string[:index] + "," + output_string[index:]
+            index = output_string.find(matching_word, index + 2)
+    return output_string
+
 def send_sentence(string):
     #Здесь должна быть реализована функция отправки сообщения на сервер к другим сообщениям
-    print("send_sentence sends: " + string)
+    print("send_sentence sends: " + punctuation_post_processing(string))
 
 def recognize_audio(recognizer, stop_signal, queue):
     while not stop_signal.is_set():
@@ -29,7 +48,7 @@ def main():
     recog_func = sr.Recognizer()
     mic = sr.Microphone()
 
-    condition_from_heavens = True
+    condition_from_heavens = False
 
     queue_of_audio_data = []
 
