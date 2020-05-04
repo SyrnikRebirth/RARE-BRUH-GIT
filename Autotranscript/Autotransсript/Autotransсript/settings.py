@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'welcome','user_window',
     'join','create', 'login',
-    'registrate','chat','channels'
+    'registrate','chat','channels',
+    'trash'
 
     # 'apps.registration'
 ]

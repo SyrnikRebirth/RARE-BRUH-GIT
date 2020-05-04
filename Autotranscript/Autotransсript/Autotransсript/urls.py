@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from login import views
+from trash import views as v1
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +27,6 @@ urlpatterns = [
     path('login/', include('login.urls')),
     path('registrate/', include('registrate.urls')),
     path('logout/', views.logoutUser, name='logout'),
-    path('chat/', include('chat.urls'))
+    path('chat/', include('chat.urls')),
+    path('trash/',v1.output, name ="script"),
 ]

@@ -1,21 +1,19 @@
 <!-- chat/templates/chat/room.html -->
 <!DOCTYPE html>
-{% load static %}
 <html>
 <head>
     <meta charset="utf-8"/>
     <title>Chat Room</title>
 </head>
-<script src="{% static 'reconnecting-websocket.js' %}"></script>
 <body>
     <textarea id="chat-log" cols="100" rows="20"></textarea><br>
-    <input id="chat-message-input" type="text" size="100"><br>
-    <input id="chat-message-submit" type="button" value="Send">
+    <input id="room-name-submit" type="button" value="On">
+    <input id="room-name-submit" type="button" value="Off">
     {{ room_name|json_script:"room-name" }}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
-        const chatSocket = new ReconnectingWebSocket(
+        const chatSocket = new WebSocket(
             'ws://'
             + window.location.host
             + '/ws/chat/'
@@ -25,7 +23,7 @@
 
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            document.querySelector('#chat-log').value += (data.message + '\n');
+            document.querySelector('#chat-log').value += (data.message + '\n'); // здесь идет передача в основной текст
         };
 
         chatSocket.onclose = function(e) {
@@ -43,8 +41,7 @@
             const messageInputDom = document.querySelector('#chat-message-input');
             const message = messageInputDom.value;
             chatSocket.send(JSON.stringify({
-                'message': message,
-                'command': 'fetch_messages'
+                'message': message
             }));
             messageInputDom.value = '';
         };
