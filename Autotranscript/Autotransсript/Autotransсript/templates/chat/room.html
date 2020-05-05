@@ -7,8 +7,15 @@
 </head>
 <body>
     <textarea id="chat-log" cols="100" rows="20"></textarea><br>
-    <input id="room-name-submit" type="button" value="On">
-    <input id="room-name-submit" type="button" value="Off">
+    <input id="chat-message-input" type="text" size="100"><br>
+    <button onclick="location.href = {% url 'script' %}"> On</button><hr>
+  <a href="http://127.0.0.1:8000/login/" class="ml-2">Off</a>
+        <input id="chat-message-submit" type="button" value="Send">
+    {% if data%}
+
+    {{data}}
+
+    {%endif%}
     {{ room_name|json_script:"room-name" }}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);

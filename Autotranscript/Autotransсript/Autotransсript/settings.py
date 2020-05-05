@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'welcome','user_window',
     'join','create', 'login',
     'registrate','chat','channels',
-    'trash'
 
     # 'apps.registration'
 ]

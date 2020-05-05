@@ -3,7 +3,8 @@ import speech_recognition as sr
 import time
 import sys
 import threading
-
+import pyperclip as pc
+import pyautogui as pag
 
 
 def index(request):
@@ -39,6 +40,15 @@ def output(request):
     def send_sentence(string):
         #Здесь должна быть реализована функция отправки сообщения на сервер к другим сообщениям
         print("send_sentence sends: " + punctuation_post_processing(string))
+        text = punctuation_post_processing(string)
+        pc.copy(text)
+        # pag.move(0,15, duration = 1)
+        # pag.click()
+        if text != "v":
+            pag.hotkey('ctrl','v')
+            pag.press('enter')
+        # pag.move(0,-15, duration = 1)
+
 
     def recognize_audio(recognizer, stop_signal, queue):
         while not stop_signal.is_set():
@@ -77,7 +87,7 @@ def output(request):
     while True:
         with mic as source:
             print("Пожалуйста говорите")
-            audio = recog_func.listen(source, timeout = 2)
+            audio = recog_func.listen(source, timeout = 10)
         queue_of_audio_data.append(audio)
         print("Началась обработка сообщения...")
         if receive_stop_signal(condition_from_heavens): break

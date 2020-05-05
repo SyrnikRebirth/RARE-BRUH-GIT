@@ -32,6 +32,7 @@ def send_sentence(string):
     #Здесь должна быть реализована функция отправки сообщения на сервер к другим сообщениям
     print("send_sentence sends: " + punctuation_post_processing(string))
 
+
 def recognize_audio(recognizer, stop_signal, queue):
     while not stop_signal.is_set():
         #Если есть необработанные аудиофайлы
@@ -69,7 +70,7 @@ def main():
     while True:
         with mic as source:
             print("Пожалуйста говорите")
-            audio = recog_func.listen(source, timeout = 2)
+            audio = recog_func.listen(source, timeout = 10)
         queue_of_audio_data.append(audio)
         print("Началась обработка сообщения...")
         if receive_stop_signal(condition_from_heavens): break
