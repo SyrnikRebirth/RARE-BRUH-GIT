@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #B2DFDB !important;
+}
+
+#form-title{
+  color: #fff;
+
+}
+
+.user_card {
+  float: left;
+  margin-left: 20px;
+  width: 250px;
+  height: 150px;
+  background: #009688;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+
+}
+
+.on_btn {
+  width: 100%;
+  background: #00796B !important;
+  color: white !important;
+  margin: auto;
+  width: 100;
+  height: 75;
+}
+.on_btn:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+
+.off_btn {
+  width: 100%;
+  background: #00796B !important;
+  color: white !important;
+  margin: auto;
+  width: 100;
+  height: 75;
+}
+.off_btn:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+#chat-message-submit {
+
+    background: transparent;
+    border: none !important;
+    font-size:0;
+}
+#chat-message-input {
+
+    background: transparent;
+    border: none !important;
+}

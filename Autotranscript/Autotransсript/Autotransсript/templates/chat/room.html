@@ -1,21 +1,23 @@
 <!-- chat/templates/chat/room.html -->
 <!DOCTYPE html>
-<html>
+<html lang="ru">
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/room.css' %}"/>
 <head>
     <meta charset="utf-8"/>
-    <title>Chat Room</title>
+    <title>Сессия</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js%22%3E" ></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 </head>
 <body>
     <textarea id="chat-log" cols="100" rows="20"></textarea><br>
     <input id="chat-message-input" type="text" size="100"><br>
-    <button onclick="location.href = {% url 'script' %}"> On</button><hr>
-  <a href="http://127.0.0.1:8000/login/" class="ml-2">Off</a>
         <input id="chat-message-submit" type="button" value="Send">
-    {% if data%}
-
-    {{data}}
-
-    {%endif%}
+        <div class="user_card">
+    <button class = "btn on_btn" onclick="location.href = {% url 'script' %}"> On</button><hr>
+    <button class = "btn off_btn" onclick="location.href=http://127.0.0.1:8000/login/"> Off</button><hr>
+    </div>
     {{ room_name|json_script:"room-name" }}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
@@ -30,7 +32,7 @@
 
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            document.querySelector('#chat-log').value += (data.message + '\n'); // здесь идет передача в основной текст
+            document.querySelector('#chat-log').value += ({{request.user}}+'\n'+data.message + '\n'); // здесь идет передача в основной текст
         };
 
         chatSocket.onclose = function(e) {

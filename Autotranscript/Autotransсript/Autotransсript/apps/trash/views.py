@@ -5,7 +5,7 @@ import sys
 import threading
 import pyperclip as pc
 import pyautogui as pag
-
+from time import gmtime, strftime
 
 def index(request):
     return render(request, 'trash123/create_page.html')
@@ -40,7 +40,7 @@ def output(request):
     def send_sentence(string):
         #Здесь должна быть реализована функция отправки сообщения на сервер к другим сообщениям
         print("send_sentence sends: " + punctuation_post_processing(string))
-        text = punctuation_post_processing(string)
+        text =str(strftime("%Y-%m-%d %H:%M:%S", gmtime()))+" "+punctuation_post_processing(string)
         pc.copy(text)
         # pag.move(0,15, duration = 1)
         # pag.click()
