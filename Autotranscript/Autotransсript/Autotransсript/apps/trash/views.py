@@ -6,7 +6,12 @@ import threading
 import pyperclip as pc
 import pyautogui as pag
 from time import gmtime, strftime
+from django.contrib.auth.models import User
 
+
+def sample_view(request):
+    current_user = request.user
+    return current_user.username
 def index(request):
     return render(request, 'trash123/create_page.html')
 
@@ -38,17 +43,22 @@ def output(request):
         return output_string
 
     def send_sentence(string):
+        f = open('srenogramma.txt', 'a')
+        assert(f.closed==False)
         #Здесь должна быть реализована функция отправки сообщения на сервер к другим сообщениям
         print("send_sentence sends: " + punctuation_post_processing(string))
-        text =str(strftime("%Y-%m-%d %H:%M:%S", gmtime()))+" "+punctuation_post_processing(string)
+        text =str(strftime("%H:%M", gmtime()))+" "+punctuation_post_processing(string)
+        print(str(request.user.username))
+        f.write(str(request.user.username)+'\n')
+        f.write(text+'\n')
         pc.copy(text)
         # pag.move(0,15, duration = 1)
         # pag.click()
         if text != "v":
             pag.hotkey('ctrl','v')
             pag.press('enter')
-        # pag.move(0,-15, duration = 1)
 
+        # pag.move(0,-15, duration = 1)
 
     def recognize_audio(recognizer, stop_signal, queue):
         while not stop_signal.is_set():
