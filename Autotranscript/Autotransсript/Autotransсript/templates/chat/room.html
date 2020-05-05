@@ -16,7 +16,6 @@
         <input id="chat-message-submit" type="button" value="Send">
         <div class="user_card">
     <button class = "btn on_btn" onclick="location.href = {% url 'script' %}"> On</button><hr>
-    <button class = "btn off_btn" onclick="location.href=http://127.0.0.1:8000/login/"> Off</button><hr>
     </div>
     {{ room_name|json_script:"room-name" }}
     <script>

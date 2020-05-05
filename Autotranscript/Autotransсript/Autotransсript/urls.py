@@ -28,5 +28,6 @@ urlpatterns = [
     path('registrate/', include('registrate.urls')),
     path('logout/', views.logoutUser, name='logout'),
     path('chat/', include('chat.urls')),
-    path('trash/',v1.output, name ="script"),
+    path('trash/',include('trash.urls')),
+    # path('trash/',v1.download, name ="script2"),
 ]

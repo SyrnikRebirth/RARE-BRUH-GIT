@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('',views.index, name = 'index'),
+    path('',views.output, name ="script"),
+    path('', views.download, name = 'script2')
 
 ]

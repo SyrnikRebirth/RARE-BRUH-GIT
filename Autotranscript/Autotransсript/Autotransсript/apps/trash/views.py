@@ -7,6 +7,7 @@ import pyperclip as pc
 import pyautogui as pag
 from time import gmtime, strftime
 from django.contrib.auth.models import User
+from . import docx_writer
 
 
 def sample_view(request):
@@ -16,7 +17,7 @@ def index(request):
     return render(request, 'trash123/create_page.html')
 
 def output(request):
-
+    condition_from_heavens = [False]
     def receive_stop_signal(signal):
         if (signal == True):
             return True
@@ -67,6 +68,8 @@ def output(request):
                 try:
                     #Отправляем информацию в гугл для обработки
                     text = recognizer.recognize_google(queue.pop(0), language="ru-RU").lower()
+                    if (text == "стоп земля"):
+                        condition_from_heavens[0] = True
                     send_sentence(text)
                 except:
                     pass
@@ -75,8 +78,6 @@ def output(request):
 
     recog_func = sr.Recognizer()
     mic = sr.Microphone()
-
-    condition_from_heavens = False
 
     queue_of_audio_data = []
 
@@ -95,14 +96,19 @@ def output(request):
 
     #Основное тело программы, которое считывает информацию с микрофона до тех пор пока не придет сигнал остановки
     while True:
+        if condition_from_heavens[0]: break
         with mic as source:
             print("Пожалуйста говорите")
             audio = recog_func.listen(source, timeout = 10)
         queue_of_audio_data.append(audio)
         print("Началась обработка сообщения...")
-        if receive_stop_signal(condition_from_heavens): break
     #Поднимаем стоп сигнал для служебного потока, чтобы он закончил свое выполнение
     stop_signal.set()
     #Мерджим потоки
-    thread_for_recognizer.join()
     return render(request, 'trash123/create_page.html')
+    thread_for_recognizer.join()
+
+def download(request):
+    print("download has been called")
+    docx_writer.turn_txt_to_docx('srenogramma.txt')
+    return render(request, 'user_window/u_window.html')
